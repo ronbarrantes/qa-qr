@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" data-design="clean">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QP Template Editor</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="designs.css" />
+    <link rel="stylesheet" href="editor-styles.css" />
+  </head>
+  <body class="editor-page">
+    <main>
+      <header class="page-header">
+        <h1>Template Editor</h1>
+        <p class="helper" style="margin: 0;">
+          Use <code>#&nbsp;Category</code> for tabs, <code>##&nbsp;Name</code> for QPs,
+          and <code>&#123;&#123;fieldName&#125;&#125;</code> for form fields.
+        </p>
+        <div class="header-actions" style="margin-left: auto;">
+          <button id="close-editor-btn" type="button" class="icon-btn" title="Close"></button>
+        </div>
+      </header>
+
+      <div class="editor-layout">
+
+        <!-- ── Left: textarea + actions ── -->
+        <section class="card editor-main">
+          <div class="section-header">
+            <h2>Markdown</h2>
+            <div class="header-actions">
+              <button id="upload-btn" type="button" class="secondary compact-btn">
+                Upload .md
+              </button>
+              <button id="download-btn" type="button" class="secondary compact-btn">
+                Download .md
+              </button>
+            </div>
+          </div>
+
+          <input id="upload-file" type="file" accept=".md,.txt,text/markdown,text/plain" hidden />
+
+          <textarea
+            id="template-blob"
+            class="editor-textarea"
+            spellcheck="false"
+            autocorrect="off"
+            autocapitalize="off"
+            placeholder="# Category Name&#10;&#10;## QP Template Name&#10;Associate {{associateId}} placed item {{itemNumber}} in location {{locationFound}}, but it should be in {{correctLocation}}."
+          ></textarea>
+
+          <p id="editor-status" class="field-status" aria-live="polite"></p>
+
+          <div class="buttons">
+            <button id="save-btn" type="button">Save</button>
+            <button id="reset-btn" type="button" class="secondary danger-btn">
+              Reset
+            </button>
+          </div>
+        </section>
+
+        <!-- ── Right: live structure preview ── -->
+        <section class="card editor-preview">
+          <div class="section-header">
+            <h2>Preview</h2>
+            <span class="helper" style="margin: 0; font-size: 0.75rem;">Updates as you type</span>
+          </div>
+          <div id="preview-content" class="preview-content">
+            <p class="helper">Start typing in the editor to see the parsed structure here.</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <script src="logic.js"></script>
+    <script src="editor.js"></script>
+  </body>
+</html>

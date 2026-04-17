@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "ICQA Quality Portals",
+  "author": "Ron Barrantes",
+  "description": "Generate ICQA accountability Quality Portal statements from configurable markdown templates.",
+  "version": "1.0.0",
+  "permissions": ["clipboardWrite", "storage"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "ICQA Quality Portals",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["editor.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

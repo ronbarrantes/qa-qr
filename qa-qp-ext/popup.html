@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ICQA Quality Portals</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="designs.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <!-- ── Left rail: categories ── -->
+      <nav class="rail" aria-label="Categories">
+        <div class="rail-header">QP</div>
+        <div id="cat-list" class="rail-items"></div>
+        <button id="settings-btn" class="rail-item rail-bottom" type="button" title="Settings">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65
+                     1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65
+                     0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65
+                     1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0
+                     0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65
+                     1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0
+                     0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65
+                     1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0
+                     0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </nav>
+
+      <!-- ── Middle: template list ── -->
+      <section class="templates-panel" aria-label="Templates">
+        <h2 id="tpl-heading" class="panel-heading">Templates</h2>
+        <ul id="tpl-list" class="tpl-list"></ul>
+      </section>
+
+      <!-- ── Right: workspace ── -->
+      <section class="workspace" aria-label="Workspace">
+        <!-- Empty state (Design B spark) -->
+        <div id="ws-empty" class="ws-empty">
+          <div class="ws-empty-spark">✦</div>
+          <h2>Quality Portals</h2>
+          <p>Pick a category &amp; template to get started</p>
+        </div>
+
+        <!-- Live workspace (Design B layout) -->
+        <div id="ws-content" class="ws-content hidden">
+          <div class="ws-crumb">
+            <span id="crumb-cat" class="crumb-cat"></span>
+            <span class="crumb-sep">›</span>
+            <span id="crumb-tpl" class="crumb-tpl"></span>
+          </div>
+
+          <div id="ws-fields" class="ws-fields"></div>
+
+          <div class="ws-toolbar">
+            <button id="gen-btn" type="button" class="tb-btn tb-primary">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                   stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+              Generate
+            </button>
+            <button id="copy-btn" type="button" class="tb-btn tb-secondary" disabled>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              Copy
+            </button>
+            <button id="clear-btn" type="button" class="tb-btn tb-danger">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0
+                         0 1 2 2v2"/>
+              </svg>
+              New QP
+            </button>
+          </div>
+
+          <div id="ws-result" class="ws-result hidden">
+            <pre id="ws-result-text" class="ws-result-text"></pre>
+          </div>
+          <p id="ws-status" class="ws-status" aria-live="polite"></p>
+        </div>
+      </section>
+    </div>
+
+    <section id="settings-panel" class="settings-panel hidden" aria-label="Settings">
+      <div class="section-header settings-header" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+        <h2 id="settings-title">Settings</h2>
+        <button id="close-settings" type="button" class="icon-btn" title="Back" aria-label="Back">✕</button>
+      </div>
+
+      <div class="design-section">
+        <span class="design-section-label">Design</span>
+        <div class="design-cards" role="group" aria-label="Choose a design">
+          <button class="design-card" data-design="clean" type="button" aria-pressed="true">
+            <span class="design-card-swatch"></span>
+            <span class="design-card-name">Clean</span>
+          </button>
+          <button class="design-card" data-design="midnight" type="button" aria-pressed="false">
+            <span class="design-card-swatch"></span>
+            <span class="design-card-name">Midnight</span>
+          </button>
+          <button class="design-card" data-design="walmart" type="button" aria-pressed="false">
+            <span class="design-card-swatch"></span>
+            <span class="design-card-name">Walmart</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-theme-row">
+        <label for="theme-mode">Theme</label>
+        <select id="theme-mode">
+          <option value="system">System</option>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </select>
+      </div>
+
+      <div class="settings-footer settings-footer-editor">
+        <button id="open-editor-btn" type="button" class="secondary">Open Template Editor</button>
+      </div>
+
+      <div class="settings-footer">
+        <button id="settings-discard" type="button" class="secondary">Discard</button>
+        <button id="settings-save" type="button">Save</button>
+      </div>
+    </section>
+
+    <script src="logic.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

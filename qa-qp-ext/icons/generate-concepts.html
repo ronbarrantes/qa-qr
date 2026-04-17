@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Icon Concepts — QA Quality Portals</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #080b14;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 36px 24px 60px;
+      gap: 40px;
+    }
+
+    header { text-align: center; }
+    h1 { font-size: 1.2rem; font-weight: 800; color: #ffc220; margin: 0 0 6px; }
+    .subtitle { font-size: 0.82rem; color: #9aa4b2; }
+
+    .concepts-grid {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 1060px;
+    }
+
+    .concept-card {
+      border-radius: 16px;
+      padding: 24px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      min-width: 270px;
+      flex: 1;
+    }
+
+    /* Each card tinted to its own bg family */
+    .card-teal   { background: #021f1f; border: 1px solid #0a6e6e; }
+    .card-violet { background: #160630; border: 1px solid #6d28d9; }
+    .card-emerald{ background: #021a0e; border: 1px solid #15803d; }
+
+    .concept-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 20px;
+      padding: 3px 14px;
+    }
+    .label-teal   { color: #2dd4bf; background: #041f1f; border: 1px solid #0a6e6e; }
+    .label-violet { color: #c4b5fd; background: #1a0640; border: 1px solid #6d28d9; }
+    .label-emerald{ color: #6ee7b7; background: #031a0a; border: 1px solid #15803d; }
+
+    .concept-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #e5e7eb;
+      margin: 0;
+      text-align: center;
+    }
+
+    .concept-desc {
+      font-size: 0.76rem;
+      color: #9aa4b2;
+      text-align: center;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .contrast-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .badge-contrast {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+      background: #00091f;
+      border: 1px solid #2a8703;
+      color: #4ade80;
+    }
+
+    .previews {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .preview-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    canvas {
+      border-radius: 6px;
+      image-rendering: pixelated;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    }
+    .size-label { font-size: 0.7rem; color: #9aa4b2; }
+
+    .dl-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .dl-btn {
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid;
+    }
+    .btn-teal   { background: #041f1f; color: #2dd4bf; border-color: #0a6e6e; }
+    .btn-teal:hover   { background: #0a6e6e; color: #fff; }
+    .btn-violet { background: #1a0640; color: #c4b5fd; border-color: #6d28d9; }
+    .btn-violet:hover { background: #6d28d9; color: #fff; }
+    .btn-emerald{ background: #031a0a; color: #6ee7b7; border-color: #15803d; }
+    .btn-emerald:hover{ background: #15803d; color: #fff; }
+
+    .dl-all {
+      padding: 9px 26px;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 700;
+      width: 100%;
+    }
+    .dl-all-teal   { background: #0a6e6e; }
+    .dl-all-teal:hover   { background: #ffc220; color: #012d2d; }
+    .dl-all-violet { background: #6d28d9; }
+    .dl-all-violet:hover { background: #ffc220; color: #160630; }
+    .dl-all-emerald{ background: #15803d; }
+    .dl-all-emerald:hover{ background: #ffc220; color: #021a0e; }
+
+    #global-status {
+      font-size: 0.82rem;
+      color: #4ade80;
+      min-height: 1.2em;
+      text-align: center;
+    }
+    .note {
+      font-size: 0.75rem;
+      color: #9aa4b2;
+      text-align: center;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+    code {
+      background: #0c2340;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      color: #7dd3fc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌀 QA Quality Portals — 3 Icon Concepts</h1>
+    <p class="subtitle">All: full-bleed canvas · two-color QP split · WCAG AA+ · no baked-in rounding</p>
+  </header>
+
+  <div class="concepts-grid" id="concepts-grid"></div>
+  <p id="global-status"></p>
+
+  <p class="note">
+    Pick a winner and hit its <strong>Download All 4</strong> button.
+    Rename to <code>icon16.png</code>, <code>icon32.png</code>, <code>icon48.png</code>,
+    <code>icon128.png</code> → drop into <code>icons/</code> → reload extension.
+  </p>
+
+  <script>
+    const SHADOW = `<filter id="sh" x="-20%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.6)"/>
+    </filter>`;
+
+    // ──────────────────────────────────────────────────────────────────────
+    // CONCEPT A — Deep Teal
+    // Q=white P=spark-yellow · clean, no decoration, max legibility
+    // white on #065959 ≈ 7.8:1 ✓ AAA | #ffc220 on #065959 ≈ 4.9:1 ✓ AA+
+    // ──────────────────────────────────────────────────────────────────────
+    // Q text-anchor=end + P text-anchor=start, both at x=64 (canvas midpoint)
+    // No letter-spacing — eliminates the trailing-space centering drift
+    const SVG_A = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Quality Portals icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#0a7070"/>
+      <stop offset="100%" stop-color="#012d2d"/>
+    </linearGradient>
+    ${SHADOW}
+  </defs>
+  <rect width="128" height="128" fill="url(#bg)"/>
+  <text x="64" y="92" text-anchor="end"
+    font-family="'Arial Black','Arial',sans-serif"
+    font-size="78" font-weight="900"
+    fill="white" filter="url(#sh)">Q</text>
+  <text x="64" y="92" text-anchor="start"
+    font-family="'Arial Black','Arial',sans-serif"
+    font-size="78" font-weight="900"
+    fill="#ffc220" filter="url(#sh)">P</text>
+</svg>`;
+
+    // ──────────────────────────────────────────────────────────────────────
+    // CONCEPT B — Deep Violet
+    // Q=spark-yellow P=white · portal ring behind the Q for the "portal" nod
+    // white on #2d0a6e ≈ 11.4:1 ✓ AAA | #ffc220 on #2d0a6e ≈ 7.2:1 ✓ AAA
+    // ──────────────────────────────────────────────────────────────────────
+    // Portal ring cx tracks where Q's bowl actually sits with end-anchor at x=64
+    // At font-size 88, Q is ~60px wide so its visual center is around x=34
+    const SVG_B = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Quality Portals icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#4a0fa8"/>
+      <stop offset="100%" stop-color="#1a0440"/>
+    </linearGradient>
+    ${SHADOW}
+  </defs>
+  <rect width="128" height="128" fill="url(#bg)"/>
+  <circle cx="34" cy="62" r="32"
+    fill="none" stroke="#ffc220" stroke-width="5" opacity="0.22"/>
+  <text x="64" y="92" text-anchor="end"
+    font-family="'Arial Black','Arial',sans-serif"
+    font-size="78" font-weight="900"
+    fill="#ffc220" filter="url(#sh)">Q</text>
+  <text x="64" y="92" text-anchor="start"
+    font-family="'Arial Black','Arial',sans-serif"
+    font-size="78" font-weight="900"
+    fill="white" filter="url(#sh)">P</text>
+</svg>`;
+
+    // ──────────────────────────────────────────────────────────────────────
+    // CONCEPT C — Deep Emerald
+    // Q=white P=white · bold spark-yellow bar below anchors & separates the rounds
+    // white on #0d5c30 ≈ 8.7:1 ✓ AAA | #ffc220 bar is decorative (not text)
+    // ──────────────────────────────────────────────────────────────────────
+    // Same end+start split for consistency — both white, bar does the visual work
+    const SVG_C = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Quality Portals icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#106b38"/>
+      <stop offset="100%" stop-color="#02200f"/>
+    </linearGradient>
+    ${SHADOW}
+  </defs>
+  <rect width="128" height="128" fill="url(#bg)"/>
+  <rect x="12" y="99" width="104" height="9" rx="4" fill="#ffc220" filter="url(#sh)"/>
+  <text x="64" y="92" text-anchor="end"
+    font-family="'Arial Black','Arial',sans-serif"
+    font-size="78" font-weight="900"
+    fill="white" filter="url(#sh)">Q</text>
+  <text x="64" y="92" text-anchor="start"
+    font-family="'Arial Black','Arial',sans-serif"
+    font-size="78" font-weight="900"
+    fill="white" filter="url(#sh)">P</text>
+</svg>`;
+
+    // ──────────────────────────────────────────────────────────────────────
+
+    const CONCEPTS = [
+      {
+        id:       "a",
+        label:    "A",
+        name:     "Deep Teal · Split Color",
+        desc:     "Q in white, P in spark yellow.\nTwo-color split is the A11y fix for round letters blurring — the eye snaps to the color boundary instantly.",
+        badges:   ["white 7.8:1 ✓ AAA", "yellow 4.9:1 ✓ AA+"],
+        svg:      SVG_A,
+        cardCls:  "card-teal",
+        labelCls: "label-teal",
+        btnCls:   "btn-teal",
+        dlCls:    "dl-all-teal",
+      },
+      {
+        id:       "b",
+        label:    "B",
+        name:     "Deep Violet · Portal Ring",
+        desc:     "Q in spark yellow, P in white.\nA ghost ring sits behind the Q — quiet nod to 'portal' without fighting the text. Highest contrast of the three.",
+        badges:   ["yellow 7.2:1 ✓ AAA", "white 11.4:1 ✓ AAA"],
+        svg:      SVG_B,
+        cardCls:  "card-violet",
+        labelCls: "label-violet",
+        btnCls:   "btn-violet",
+        dlCls:    "dl-all-violet",
+      },
+      {
+        id:       "c",
+        label:    "C",
+        name:     "Deep Emerald · Yellow Bar",
+        desc:     "QP both in white, bold yellow bar below.\nThe bar acts as a visual anchor separating the round letters from the bg — gives the icon a 'badge' feel.",
+        badges:   ["white 8.7:1 ✓ AAA", "bar decorative"],
+        svg:      SVG_C,
+        cardCls:  "card-emerald",
+        labelCls: "label-emerald",
+        btnCls:   "btn-emerald",
+        dlCls:    "dl-all-emerald",
+      },
+    ];
+
+    const SIZES = [16, 32, 48, 128];
+
+    function svgToImage(svgStr, size) {
+      return new Promise((resolve, reject) => {
+        const blob = new Blob([svgStr], { type: "image/svg+xml" });
+        const url  = URL.createObjectURL(blob);
+        const img  = new Image(size, size);
+        img.onload  = () => { URL.revokeObjectURL(url); resolve(img); };
+        img.onerror = (e) => { URL.revokeObjectURL(url); reject(e); };
+        img.src = url;
+      });
+    }
+
+    async function renderCanvas(svgStr, size) {
+      const canvas  = document.createElement("canvas");
+      canvas.width  = size;
+      canvas.height = size;
+      const img = await svgToImage(svgStr, size);
+      canvas.getContext("2d").drawImage(img, 0, 0, size, size);
+      return canvas;
+    }
+
+    function download(canvas, filename) {
+      const a    = document.createElement("a");
+      a.download = filename;
+      a.href     = canvas.toDataURL("image/png");
+      a.click();
+    }
+
+    async function buildCard(concept) {
+      const card = document.createElement("div");
+      card.className = `concept-card ${concept.cardCls}`;
+
+      const lbl = document.createElement("span");
+      lbl.className   = `concept-label ${concept.labelCls}`;
+      lbl.textContent = `Concept ${concept.label}`;
+      card.appendChild(lbl);
+
+      const name = document.createElement("p");
+      name.className   = "concept-name";
+      name.textContent = concept.name;
+      card.appendChild(name);
+
+      const desc = document.createElement("p");
+      desc.className   = "concept-desc";
+      desc.textContent = concept.desc;
+      card.appendChild(desc);
+
+      const badgeRow = document.createElement("div");
+      badgeRow.className = "contrast-badges";
+      for (const b of concept.badges) {
+        const badge = document.createElement("span");
+        badge.className   = "badge-contrast";
+        badge.textContent = b;
+        badgeRow.appendChild(badge);
+      }
+      card.appendChild(badgeRow);
+
+      const previews  = document.createElement("div");
+      previews.className = "previews";
+      const canvasMap = {};
+
+      for (const size of SIZES) {
+        const canvas   = await renderCanvas(concept.svg, size);
+        canvasMap[size] = canvas;
+
+        const display       = Math.max(size, 72);
+        canvas.style.width  = display + "px";
+        canvas.style.height = display + "px";
+
+        const lbl2 = document.createElement("span");
+        lbl2.className   = "size-label";
+        lbl2.textContent = `${size}×${size}`;
+
+        const item = document.createElement("div");
+        item.className = "preview-item";
+        item.append(canvas, lbl2);
+        previews.appendChild(item);
+      }
+      card.appendChild(previews);
+
+      const dlRow = document.createElement("div");
+      dlRow.className = "dl-row";
+      for (const size of SIZES) {
+        const btn = document.createElement("button");
+        btn.className   = `dl-btn ${concept.btnCls}`;
+        btn.textContent = `${size}px`;
+        btn.onclick     = () => download(canvasMap[size], `icon${size}.png`);
+        dlRow.appendChild(btn);
+      }
+      card.appendChild(dlRow);
+
+      const dlAll = document.createElement("button");
+      dlAll.className   = `dl-all ${concept.dlCls}`;
+      dlAll.textContent = `⬇ Use Concept ${concept.label} — Download All 4`;
+      dlAll.onclick = () => {
+        for (const s of SIZES) download(canvasMap[s], `icon${s}.png`);
+        document.getElementById("global-status").textContent =
+          `✓ Concept ${concept.label} downloaded! Drop the 4 PNGs into icons/ and reload.`;
+      };
+      card.appendChild(dlAll);
+
+      return card;
+    }
+
+    async function init() {
+      const grid = document.getElementById("concepts-grid");
+      for (const concept of CONCEPTS) {
+        const card = await buildCard(concept);
+        grid.appendChild(card);
+      }
+    }
+
+    init().catch(err => {
+      document.getElementById("global-status").textContent = "❌ " + (err.message ?? err);
+    });
+  </script>
+</body>
+</html>

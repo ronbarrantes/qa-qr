@@ -1,0 +1,561 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Shared design overrides for popup + editor
+   Clean defaults live in styles.css.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root[data-design="midnight"] {
+  color-scheme: dark;
+  --bg: #0c0c14;
+  --surface: #16162a;
+  --surface-2: #111122;
+  --text: #e4e4f0;
+  --text-secondary: #9494b8;
+  --muted: #6e6e8a;
+  --border: rgba(148, 148, 184, 0.14);
+  --border-strong: rgba(148, 148, 184, 0.22);
+  --shadow: 0 2px 16px rgba(0, 0, 0, 0.42), 0 1px 4px rgba(0, 0, 0, 0.3);
+  --accent: #8b5cf6;
+  --accent-hover: #a78bfa;
+  --accent-soft: rgba(139, 92, 246, 0.12);
+  --ring: rgba(139, 92, 246, 0.28);
+  --btn-primary-bg: #8b5cf6;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #a78bfa;
+  --btn-secondary-bg: #1e1e38;
+  --btn-secondary-text: #e4e4f0;
+  --btn-secondary-border: rgba(148, 148, 184, 0.18);
+  --btn-secondary-hover: #2a2a48;
+  --input-bg: #111122;
+  --input-border: rgba(148, 148, 184, 0.18);
+  --input-focus-bg: #0e0e1e;
+  --input-focus-border: #8b5cf6;
+  --danger-bg: rgba(220, 38, 38, 0.12);
+  --danger-text: #fca5a5;
+  --danger-border: rgba(220, 38, 38, 0.28);
+  --danger-hover: rgba(220, 38, 38, 0.18);
+
+  --rail-bg: #0f1020;
+  --rail-text: #8f8fbc;
+  --rail-hover-bg: rgba(255, 255, 255, 0.05);
+  --rail-hover-text: #d6d6ff;
+  --rail-active-bg: rgba(139, 92, 246, 0.18);
+  --rail-active-border: #a78bfa;
+  --panel-bg: #17182c;
+  --panel-border: rgba(148, 148, 184, 0.16);
+  --panel-heading: #9a9abd;
+  --workspace-bg: #121321;
+  --template-item-text: #ececff;
+  --template-item-hover: rgba(139, 92, 246, 0.1);
+  --template-item-active-bg: rgba(139, 92, 246, 0.16);
+  --field-label: #a5a5c8;
+  --result-bg: #10111c;
+  --result-border: rgba(148, 148, 184, 0.18);
+  --result-accent: #a78bfa;
+  --settings-overlay: rgba(6, 6, 12, 0.68);
+  --settings-card-bg: #18192d;
+  --settings-card-border: rgba(148, 148, 184, 0.2);
+  --settings-header-gradient: linear-gradient(180deg, rgba(24, 25, 45, 0.98) 0%, rgba(24, 25, 45, 0.92) 80%, rgba(24, 25, 45, 0) 100%);
+  --design-card-bg: #111222;
+  --design-card-hover: #1a1b31;
+  --design-card-border: rgba(148, 148, 184, 0.18);
+}
+
+:root[data-design="walmart"] {
+  color-scheme: dark;
+  --bg: #071222;
+  --surface: #0d1f3c;
+  --surface-2: #0a1930;
+  --text: #e8ecf4;
+  --text-secondary: #8fa3c0;
+  --muted: #6a82a6;
+  --border: rgba(0, 83, 226, 0.16);
+  --border-strong: rgba(0, 83, 226, 0.24);
+  --shadow: 0 2px 16px rgba(0, 20, 60, 0.42), 0 1px 4px rgba(0, 10, 30, 0.3);
+  --accent: #0053e2;
+  --accent-hover: #1a6cff;
+  --accent-soft: rgba(0, 83, 226, 0.12);
+  --ring: rgba(0, 83, 226, 0.28);
+  --btn-primary-bg: #0053e2;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #1a6cff;
+  --btn-secondary-bg: #10284a;
+  --btn-secondary-text: #e8ecf4;
+  --btn-secondary-border: rgba(0, 83, 226, 0.2);
+  --btn-secondary-hover: #173863;
+  --input-bg: #0a1930;
+  --input-border: rgba(0, 83, 226, 0.18);
+  --input-focus-bg: #071222;
+  --input-focus-border: #0053e2;
+  --danger-bg: rgba(234, 17, 0, 0.12);
+  --danger-text: #ffb4ae;
+  --danger-border: rgba(234, 17, 0, 0.28);
+  --danger-hover: rgba(234, 17, 0, 0.18);
+
+  --rail-bg: #0d1b3e;
+  --rail-text: #7b8fb8;
+  --rail-hover-bg: rgba(255, 255, 255, 0.06);
+  --rail-hover-text: #c0ccdf;
+  --rail-active-bg: rgba(0, 83, 226, 0.2);
+  --rail-active-border: #ffc220;
+  --panel-bg: #10213f;
+  --panel-border: rgba(0, 83, 226, 0.16);
+  --panel-heading: #94a8c7;
+  --workspace-bg: #0a1628;
+  --template-item-text: #e8ecf4;
+  --template-item-hover: rgba(0, 83, 226, 0.12);
+  --template-item-active-bg: rgba(0, 83, 226, 0.18);
+  --field-label: #9ab0d2;
+  --result-bg: #081427;
+  --result-border: rgba(0, 83, 226, 0.18);
+  --result-accent: #ffc220;
+  --settings-overlay: rgba(3, 11, 24, 0.7);
+  --settings-card-bg: #0d1f3c;
+  --settings-card-border: rgba(0, 83, 226, 0.22);
+  --settings-header-gradient: linear-gradient(180deg, rgba(13, 31, 60, 0.98) 0%, rgba(13, 31, 60, 0.92) 80%, rgba(13, 31, 60, 0) 100%);
+  --design-card-bg: #0a1930;
+  --design-card-hover: #10284a;
+  --design-card-border: rgba(0, 83, 226, 0.2);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-design="midnight"][data-theme="light"] {
+  --bg: #f3f2ff;
+  --surface: #ffffff;
+  --surface-2: #f6f4ff;
+  --text: #1f1a35;
+  --text-secondary: #625a8a;
+  --muted: #7a7498;
+  --border: rgba(98, 90, 138, 0.14);
+  --border-strong: rgba(98, 90, 138, 0.2);
+  --shadow: 0 8px 24px rgba(74, 58, 140, 0.12);
+  --accent: #7c3aed;
+  --accent-hover: #6d28d9;
+  --accent-soft: rgba(124, 58, 237, 0.12);
+  --ring: rgba(124, 58, 237, 0.22);
+  --btn-primary-bg: #7c3aed;
+  --btn-primary-hover: #6d28d9;
+  --btn-secondary-bg: #f4f0ff;
+  --btn-secondary-text: #2d2350;
+  --btn-secondary-border: rgba(124, 58, 237, 0.16);
+  --btn-secondary-hover: #ebe4ff;
+  --input-bg: #ffffff;
+  --input-border: rgba(98, 90, 138, 0.16);
+  --input-focus-bg: #ffffff;
+  --input-focus-border: #7c3aed;
+  --danger-bg: #fff1f2;
+  --danger-text: #be123c;
+  --danger-border: rgba(190, 18, 60, 0.18);
+  --danger-hover: #ffe4e6;
+
+  --rail-bg: #211b3a;
+  --rail-text: #b8abd8;
+  --rail-hover-bg: rgba(255, 255, 255, 0.08);
+  --rail-hover-text: #f7f2ff;
+  --rail-active-bg: rgba(124, 58, 237, 0.24);
+  --rail-active-border: #c4b5fd;
+  --panel-bg: #ffffff;
+  --panel-border: rgba(98, 90, 138, 0.12);
+  --panel-heading: #6c5f94;
+  --workspace-bg: #fbfaff;
+  --template-item-text: #2d2350;
+  --template-item-hover: #f3edff;
+  --template-item-active-bg: #ece5ff;
+  --field-label: #6b5f94;
+  --result-bg: #faf7ff;
+  --result-border: rgba(98, 90, 138, 0.14);
+  --result-accent: #7c3aed;
+  --settings-overlay: rgba(54, 39, 107, 0.18);
+  --settings-card-bg: #ffffff;
+  --settings-card-border: rgba(98, 90, 138, 0.16);
+  --settings-header-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.94) 80%, rgba(255, 255, 255, 0) 100%);
+  --design-card-bg: #f8f5ff;
+  --design-card-hover: #f0eaff;
+  --design-card-border: rgba(124, 58, 237, 0.14);
+}
+
+:root[data-design="walmart"][data-theme="light"] {
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --surface-2: #f7f9fc;
+  --text: #1f2a37;
+  --text-secondary: #4f627d;
+  --muted: #6b7f99;
+  --border: rgba(0, 83, 226, 0.12);
+  --border-strong: rgba(0, 83, 226, 0.18);
+  --shadow: 0 8px 24px rgba(0, 30, 90, 0.1);
+  --accent: #0053e2;
+  --accent-hover: #003db0;
+  --accent-soft: rgba(0, 83, 226, 0.08);
+  --ring: rgba(0, 83, 226, 0.2);
+  --btn-primary-bg: #0053e2;
+  --btn-primary-hover: #003db0;
+  --btn-secondary-bg: #edf4ff;
+  --btn-secondary-text: #163053;
+  --btn-secondary-border: rgba(0, 83, 226, 0.14);
+  --btn-secondary-hover: #dde9fb;
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 83, 226, 0.14);
+  --input-focus-bg: #ffffff;
+  --input-focus-border: #0053e2;
+  --danger-bg: #fff1f0;
+  --danger-text: #b42318;
+  --danger-border: rgba(180, 35, 24, 0.16);
+  --danger-hover: #ffe4e1;
+
+  --rail-bg: #0d1b3e;
+  --rail-text: #b6c6e4;
+  --rail-hover-bg: rgba(255, 255, 255, 0.08);
+  --rail-hover-text: #ffffff;
+  --rail-active-bg: rgba(0, 83, 226, 0.3);
+  --rail-active-border: #ffc220;
+  --panel-bg: #ffffff;
+  --panel-border: rgba(0, 83, 226, 0.12);
+  --panel-heading: #5e748f;
+  --workspace-bg: #f7fafe;
+  --template-item-text: #1f2a37;
+  --template-item-hover: #edf4ff;
+  --template-item-active-bg: #e3efff;
+  --field-label: #5e748f;
+  --result-bg: #f8fbff;
+  --result-border: rgba(0, 83, 226, 0.14);
+  --result-accent: #ffc220;
+  --settings-overlay: rgba(0, 36, 110, 0.12);
+  --settings-card-bg: #ffffff;
+  --settings-card-border: rgba(0, 83, 226, 0.14);
+  --settings-header-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.94) 80%, rgba(255, 255, 255, 0) 100%);
+  --design-card-bg: #f7f9fc;
+  --design-card-hover: #edf4ff;
+  --design-card-border: rgba(0, 83, 226, 0.14);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.rail {
+  background: var(--rail-bg, #0d1b3e);
+}
+
+.rail-item {
+  color: var(--rail-text, #7b8fb8);
+}
+
+.rail-item:hover {
+  background: var(--rail-hover-bg, rgba(255, 255, 255, 0.06));
+  color: var(--rail-hover-text, #c0ccdf);
+}
+
+.rail-item.active {
+  background: var(--rail-active-bg, rgba(0, 83, 226, 0.2));
+  border-left-color: var(--rail-active-border, #ffc220);
+}
+
+.templates-panel {
+  background: var(--panel-bg, #ffffff);
+  border-right-color: var(--panel-border, #e2e6ec);
+}
+
+.panel-heading {
+  color: var(--panel-heading, #6e7a8a);
+}
+
+.workspace {
+  background: var(--workspace-bg, #fafbfd);
+}
+
+.ws-empty,
+.ws-status {
+  color: var(--muted);
+}
+
+.ws-empty h2,
+.crumb-tpl,
+.tb-secondary,
+.ws-result-text,
+.field-group input,
+.tpl-item {
+  color: var(--template-item-text, var(--text));
+}
+
+.tpl-item {
+  border-bottom-color: var(--panel-border, #f0f2f5);
+}
+
+.tpl-item:hover {
+  background: var(--template-item-hover, #f0f4ff);
+}
+
+.tpl-item.active {
+  background: var(--template-item-active-bg, #e8efff);
+  color: var(--accent);
+  border-left-color: var(--rail-active-border, #ffc220);
+}
+
+.crumb-cat,
+.tb-primary,
+.settings-footer > button:last-child {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+
+.tb-primary:hover,
+.settings-footer > button:last-child:hover {
+  background: var(--btn-primary-hover);
+}
+
+.tb-secondary {
+  background: var(--btn-secondary-bg);
+  border: 1px solid var(--btn-secondary-border);
+}
+
+.tb-secondary:hover {
+  background: var(--btn-secondary-hover);
+}
+
+.tb-danger {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+  border-color: var(--danger-border);
+}
+
+.tb-danger:hover {
+  background: var(--danger-hover);
+}
+
+.field-group label {
+  color: var(--field-label, #6e7a8a);
+}
+
+.field-group input,
+.settings-theme-row select {
+  background: var(--input-bg);
+  color: var(--text);
+  border-color: var(--input-border);
+}
+
+.field-group input:focus,
+.settings-theme-row select:focus {
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.ws-result-text {
+  background: var(--result-bg, #f6f8fb);
+  border-color: var(--result-border, #d0d7e2);
+  border-left-color: var(--result-accent, #ffc220);
+}
+
+button.icon-btn {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  padding: 0;
+  font-size: 1rem;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  border-color: transparent;
+  display: grid;
+  place-items: center;
+}
+
+button.icon-btn:hover {
+  background: var(--btn-secondary-hover);
+  border-color: var(--btn-secondary-border);
+  color: var(--text);
+}
+
+.settings-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 14px;
+  background: var(--settings-card-bg, var(--surface));
+  overflow-y: auto;
+}
+
+.settings-panel.hidden {
+  display: none !important;
+}
+
+.settings-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 2px 0 10px;
+  background: var(--settings-header-gradient, linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.94) 80%, rgba(255,255,255,0) 100%));
+  backdrop-filter: blur(4px);
+}
+
+.design-section {
+  margin-bottom: 4px;
+}
+
+.design-section-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.design-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.design-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 6px 8px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--design-card-border, var(--border));
+  background: var(--design-card-bg, var(--surface-2));
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  box-shadow: none;
+  overflow: hidden;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.design-card:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  background: var(--design-card-hover, var(--btn-secondary-hover));
+}
+
+.design-card:active {
+  transform: translateY(1px);
+}
+
+.design-card[aria-pressed="true"] {
+  border-color: var(--accent);
+  color: var(--text);
+  background: var(--design-card-hover, var(--btn-secondary-hover));
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.design-card-swatch {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: transform 0.18s ease;
+  background: conic-gradient(#d9dee8 0% 50%, #f5f7fb 50% 100%);
+}
+
+.design-card[aria-pressed="true"] .design-card-swatch {
+  transform: scale(1.12);
+}
+
+.design-card[data-design="midnight"] .design-card-swatch {
+  background: conic-gradient(#16162a 0% 50%, #8b5cf6 50% 100%);
+}
+
+.design-card[data-design="walmart"] .design-card-swatch {
+  background: conic-gradient(#0053e2 0% 50%, #ffc220 50% 100%);
+}
+
+.settings-theme-row {
+  margin-bottom: 16px;
+}
+
+.settings-theme-row label {
+  margin: 0 0 6px;
+}
+
+.settings-footer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.settings-footer-editor {
+  grid-template-columns: 1fr;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.settings-footer > button {
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.settings-footer > .secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border-color: var(--btn-secondary-border);
+}
+
+.settings-footer > .secondary:hover {
+  background: var(--btn-secondary-hover);
+}
+
+:root[data-design="midnight"] .field-status.success,
+:root[data-design="walmart"] .field-status.success,
+:root[data-design="midnight"] .ws-status.success,
+:root[data-design="walmart"] .ws-status.success {
+  color: #4ade80;
+}
+
+:root[data-design="midnight"] .field-status.error,
+:root[data-design="walmart"] .field-status.error,
+:root[data-design="midnight"] .ws-status.error,
+:root[data-design="walmart"] .ws-status.error {
+  color: #fb7185;
+}
+
+:root[data-design="walmart"] .page-header h1::after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 6px;
+  border-radius: 50%;
+  background: #ffc220;
+  box-shadow: 0 0 8px rgba(255, 194, 32, 0.5);
+  vertical-align: middle;
+}
+
+@media (max-width: 720px) {
+  .settings-panel {
+    padding: 12px;
+  }
+
+  .design-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-footer,
+  .settings-footer-editor {
+    grid-template-columns: 1fr;
+  }
+}
